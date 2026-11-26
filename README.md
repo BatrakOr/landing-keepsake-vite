@@ -36,6 +36,20 @@ src/
  └─ vite.config.js       # налаштування Vite + Vituum
 ```
 
+## Використані інструменти
+
+| Інструмент                                 | Навіщо                                                        |
+| ------------------------------------------ | ------------------------------------------------------------- |
+| Vite                                       | Dev-сервер і збірка                                           |
+| vituum + @vituum/vite-plugin-pug           | Компіляція Pug у HTML у середовищі Vite                       |
+| Sass                                       | Компіляція SCSS                                               |
+| PostCSS + Autoprefixer                     | Вендорні префікси відповідно до Browserslist                  |
+| sharp                                      | Генерація AVIF, WebP і JPEG у двох ширинах (`npm run images`) |
+| Prettier + @prettier/plugin-pug            | Єдиний стиль коду, включно з `.pug`                           |
+| Stylelint + stylelint-config-standard-scss | Перевірка SCSS, правила БЕМ                                   |
+| husky + lint-staged                        | Перевірка змінених файлів перед кожним комітом                |
+| GitHub Actions + GitHub Pages              | Автоматична збірка і публікація                               |
+
 ## Цільові браузери(.browserlist)
 
 last 2 Chrome versions
