@@ -1,0 +1,38 @@
+mixin btn(text, href, modifier)
+  - const classes = modifier ? ['btn', `btn--${modifier}`] : ['btn'];
+  if href
+    a(href=href, class=classes)&attributes(attributes)
+      if block
+        block
+      | #{ text }
+  else
+    button(type='button', class=classes)&attributes(attributes)
+      if block
+        block
+      | #{ text }
+
+mixin icon(name, size)
+  - const w = size || 16;
+  - const h = size || 16;
+  case name
+    when 'heart'
+      svg(width=w, height=h, aria-hidden='true')&attributes(attributes)
+        use(href='#i-heart')
+    when 'mail'
+      svg(width=w, height=h, aria-hidden='true')&attributes(attributes)
+        use(href='#i-mail')
+    when 'plus'
+      svg(width=w, height=h, aria-hidden='true')&attributes(attributes)
+        use(href='#i-plus')
+    when 'burger'
+      svg(width=w, height=h, aria-hidden='true')&attributes(attributes)
+        use(href='#i-burger')
+    when 'close'
+      svg(width=w, height=h, aria-hidden='true')&attributes(attributes)
+        use(href='#i-close')
+    when 'up'
+      svg(width=w, height=h, aria-hidden='true')&attributes(attributes)
+        use(href='#i-up')
+    default
+      svg(width=w, height=h, aria-hidden='true')&attributes(attributes)
+        use(href='#i-svc')

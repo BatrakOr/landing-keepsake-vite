@@ -1,0 +1,16 @@
+mixin work-card(work)
+  a(href='#works')
+    +picture({
+      name: work.image,
+      alt: work.alt,
+      width: 400,
+      height: 316,
+      eager: work.eager,
+      imgClass: 'tile',
+      color: work.color,
+    })
+    span.over
+      span.plus
+        +icon('plus', 18)
+      span.over__t #{ work.title }
+      span.over__c #{ work.category }
