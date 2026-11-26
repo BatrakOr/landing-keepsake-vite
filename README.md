@@ -1,4 +1,6 @@
 # Keepsake: лендінг на Vite, Pug і SCSS
+## сайт
+https://batrakor.github.io/landing-keepsake-vite/
 
 ## 🔧 Вимоги до середовища
 
