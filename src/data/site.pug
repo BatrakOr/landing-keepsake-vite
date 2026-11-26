@@ -1,0 +1,100 @@
+//- src/data/site.pug
+-
+  const site = {
+    lang: 'en',
+    title: 'Keepsake — digital & branding agency',
+    description: 'Keepsake is a digital and branding agency specializing in web design, poster, and motion video.',
+    copyright: '© 2026 Keepsake. All rights reserved.',
+    contactEmail: 'hello@keepsake.studio',
+    contactPhone: '+44 20 7946 0000',
+  };
+
+  const navItems = [
+    { label: 'Home', href: '#top', active: true },
+    { label: 'About us', href: '#about', active: false },
+    { label: 'Our works', href: '#works', active: false },
+    { label: 'Journal', href: '#journal', active: false },
+    { label: 'Contact', href: '#contact', active: false },
+  ];
+
+  const categories = [
+    { id: 'all', label: 'All', checked: true },
+    { id: 'branding', label: 'Branding', checked: false },
+    { id: 'identity', label: 'Identity', checked: false },
+    { id: 'print', label: 'Print', checked: false },
+    { id: 'web', label: 'Web', checked: false },
+    { id: 'motion', label: 'Motion', checked: false },
+  ];
+
+  const works = [
+    { title: 'Mock-up tag', category: 'branding', image: 'mock-up-tag-normal-one', alt: 'Mock-up tag', color: '#8fd3c8', eager: true },
+    { title: 'Piecepaper', category: 'print', image: 'piece-paper', alt: 'Piecepaper', color: '#ececec', eager: true },
+    { title: 'Disc', category: 'motion', image: 'gray-with-disk', alt: 'Disc', color: '#4a4a55', eager: true },
+    { title: 'Vol. 16', category: 'print', image: 'vol-16', alt: 'Vol. 16', color: '#a89279', eager: false },
+    { title: 'Profile UI', category: 'web', image: 'post-2', alt: 'Profile UI', color: '#22252b', eager: false },
+    { title: 'Paper stack', category: 'identity', image: 'pink-with-book', alt: 'Paper stack', color: '#e8a898', eager: false },
+    { title: 'WallSt.', category: 'branding', image: 'wallst', alt: 'WallSt.', color: '#d8d5d0', eager: false },
+    { title: 'John Doe', category: 'identity', image: 'john-doe-design', alt: 'John Doe', color: '#f2b6bd', eager: false },
+    { title: 'Seal Fabric', category: 'print', image: 'seal-fabric', alt: 'Seal Fabric', color: '#3b4a5e', eager: false },
+  ];
+
+  const services = [
+    { icon: 'svc', title: 'Web design', text: 'Responsive sites and product interfaces that look sharp on every screen.', accentIcon: false },
+    { icon: 'svc', title: 'Motion video', text: 'Explainers, logo animations and social clips that bring brands to life.', accentIcon: false },
+    { icon: 'svc', title: 'Print design', text: 'Posters, packaging and stationery prepared to be printed right.', accentIcon: false },
+    { icon: 'heart', title: 'Illustration', text: 'Custom illustrations and icon sets in a style that is yours alone.', accentIcon: true },
+  ];
+
+  const stats = [
+    { value: '120+', label: 'Projects done' },
+    { value: '8', label: 'Years in craft' },
+    { value: '64', label: 'Happy clients' },
+    { value: '15', label: 'Design awards' },
+  ];
+
+  const clients = [
+    { name: 'NORDLY', weight: 700, tracking: '2px' },
+    { name: 'Halcyon', weight: 300, tracking: 'normal' },
+    { name: 'ARCO', weight: 300, tracking: '2px' },
+    { name: 'pinewood', weight: 700, tracking: 'normal' },
+    { name: 'VELA', weight: 700, tracking: '2px' },
+    { name: 'ostra', weight: 300, tracking: 'normal' },
+  ];
+
+  const posts = [
+    { date: 'Oct 12, 2026', tag: 'Identity', title: 'Sollicitudin tortor inceptos', excerpt: 'Maecenas faucibus mollis interdum. Cum sociis natoque penatibus et magnis dis parturient montes.', image: 'post-1', color: '#5a463a' },
+    { date: 'Oct 23, 2026', tag: 'Branding', title: 'Amet inceptos fringilla fusce', excerpt: 'Maecenas faucibus mollis interdum. Cum sociis natoque penatibus et magnis dis parturient montes.', image: 'post-2', color: '#454b5c' },
+    { date: 'Sep 19, 2026', tag: 'Identity', title: 'Cursus malesuada justo', excerpt: 'Maecenas faucibus mollis interdum. Cum sociis natoque penatibus et magnis dis parturient montes.', image: 'post-3', color: '#6fb9d3' },
+    { date: 'Sep 21, 2026', tag: 'Branding', title: 'Ornare cursus bibendum purus', excerpt: 'Maecenas faucibus mollis interdum. Cum sociis natoque penatibus et magnis dis parturient montes.', image: 'post-4', color: '#2a2a2c' },
+  ];
+
+  const footerColumns = [
+    {
+      title: 'Studio',
+      links: [
+        { label: 'About us', href: '#about' },
+        { label: 'Our works', href: '#works' },
+        { label: 'Journal', href: '#journal' },
+        { label: 'Careers', href: '#top' },
+        { label: 'Contact', href: '#contact' },
+      ],
+    },
+    {
+      title: 'Services',
+      links: [
+        { label: 'Web design', href: '#about' },
+        { label: 'Motion video', href: '#about' },
+        { label: 'Print design', href: '#about' },
+        { label: 'Illustration', href: '#about' },
+        { label: 'Brand strategy', href: '#about' },
+      ],
+    },
+  ];
+
+  const socials = [
+    { name: 'RSS', letter: 'r', color: '#f59b2b', href: '#' },
+    { name: 'Facebook', letter: 'f', color: '#3b5bb5', href: '#' },
+    { name: 'Twitter', letter: 't', color: '#1fb6e6', href: '#' },
+    { name: 'Dribbble', letter: 'd', color: '#ea4c89', href: '#' },
+    { name: 'Pinterest', letter: 'p', color: '#e2434b', href: '#' },
+  ];

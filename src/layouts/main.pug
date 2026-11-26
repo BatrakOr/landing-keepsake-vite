@@ -1,21 +1,29 @@
+include ../data/site.pug
+include ../mixins/ui.pug
+include ../mixins/media.pug
+include ../mixins/cards.pug
 doctype html
-html(lang="en")
-    head
-        block meta
-            meta(charset="utf-8")
-            meta(name="viewport" content="width=device-width, initial-scale=1")
-        block title
-            title Vite Pug Template
-        block fonts
-        block main-scripts
-        block styles
-            link(rel="stylesheet" href="/src/styles/main.scss")
-    body
-        block data
-        block header
-            header.page-header header
-        block content
-            main.page-main content
-        block footer
-            footer.page-footer footer
-        block add-scripts
+html(lang=site.lang)
+  head
+    block meta
+      meta(charset='utf-8')
+      meta(name='viewport', content='width=device-width, initial-scale=1')
+    block title
+      title #{ site.title }
+    block fonts
+      include ../includes/fonts.pug
+    block main-scripts
+    block styles
+      link(rel='stylesheet', href='/src/styles/main.scss')
+  body#top
+    a.skip(href='#main') Skip to content
+    include ../includes/sprite.pug
+    block header
+      include ../components/header.pug
+    main#main.page-main
+      block content
+    block footer
+      include ../components/footer.pug
+    a.up(href='#top', aria-label='Back to top')
+      +icon('up', 20)
+    block add-scripts
