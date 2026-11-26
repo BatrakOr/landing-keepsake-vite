@@ -1,0 +1,25 @@
+@use '../utils' as *;
+
+.container {
+  width: 100%;
+  margin-inline: auto;
+  max-width: calc(var(--container) + 2 * var(--gutter));
+  padding-inline: var(--gutter);
+}
+
+.vh {
+  @include visually-hidden;
+}
+
+.skip {
+  position: absolute;
+  left: -999px;
+
+  &:focus {
+    left: rem(8);
+    top: rem(8);
+    z-index: 100;
+    background: var(--color-white);
+    padding: rem(8);
+  }
+}
