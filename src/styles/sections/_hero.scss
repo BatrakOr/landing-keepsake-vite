@@ -1,0 +1,36 @@
+@use '../utils' as *;
+
+.hero {
+  background: var(--color-bg-light);
+  padding-block: rem(48);
+
+  h1 {
+    font: 300 var(--fs-h1) / 1.25 var(--font-head);
+    color: var(--color-text-dark);
+    text-transform: uppercase;
+    letter-spacing: rem(3);
+  }
+
+  p {
+    margin-top: rem(12);
+    font-size: rem(12);
+    max-width: 60ch;
+  }
+}
+
+.hero__btns {
+  display: flex;
+  flex-direction: column;
+  gap: rem(10);
+  margin-top: rem(24);
+}
+
+@include mq(md) {
+  .hero {
+    padding-block: rem(64);
+  }
+
+  .hero__btns {
+    flex-direction: row;
+  }
+}

@@ -1,0 +1,87 @@
+@use '../utils' as *;
+
+.svc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: rem(32) rem(16);
+  margin-top: rem(32);
+
+  li {
+    flex: 1 1 calc(50% - #{rem(8)});
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: rem(12);
+  }
+
+  h3 {
+    font: 400 var(--fs-ui) / 1 var(--font-head);
+    text-transform: uppercase;
+    letter-spacing: rem(1);
+    color: var(--color-text-dark);
+  }
+
+  p {
+    font-size: rem(12);
+    line-height: rem(18);
+  }
+}
+
+.svc__i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: rem(72);
+  height: rem(72);
+  border-radius: 50%;
+  background: var(--color-bg-light);
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: var(--section-gap);
+  border-block: rem(1) solid var(--color-border);
+  padding-block: rem(24);
+  row-gap: rem(24);
+
+  li {
+    flex: 1 1 50%;
+    text-align: center;
+  }
+
+  b {
+    display: block;
+    font: 300 var(--fs-stat) / 1.1 var(--font-head);
+    color: var(--color-text-dark);
+  }
+
+  span {
+    font: 400 #{rem(10)} var(--font-head);
+    text-transform: uppercase;
+    letter-spacing: rem(1);
+    color: var(--color-muted);
+  }
+}
+
+@include mq(md) {
+  .svc li {
+    flex-basis: calc(50% - #{rem(8)});
+  }
+
+  .svc__i {
+    width: rem(96);
+    height: rem(96);
+  }
+
+  .stats li {
+    flex-basis: 25%;
+  }
+}
+
+@include mq(lg) {
+  .svc li {
+    flex-basis: calc(25% - #{rem(12)});
+  }
+}

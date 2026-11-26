@@ -1,0 +1,66 @@
+@use '../utils' as *;
+
+.posts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: rem(24) rem(30);
+  margin-top: rem(24);
+}
+
+.post {
+  flex: 1 1 100%;
+  display: flex;
+  gap: rem(16);
+
+  h3 {
+    margin: rem(4) 0;
+    font: 400 #{rem(13)} var(--font-head);
+    text-transform: uppercase;
+    letter-spacing: rem(1);
+    color: var(--color-text-dark);
+  }
+
+  p:not(.meta) {
+    font-size: rem(12);
+    line-height: rem(18);
+  }
+}
+
+.post__img {
+  flex: 0 0 rem(96);
+  width: rem(96);
+  height: rem(96);
+  object-fit: cover;
+  background: var(--c);
+}
+
+.meta {
+  font: 400 #{rem(10)} var(--font-head);
+  text-transform: uppercase;
+  letter-spacing: rem(1);
+  color: var(--color-muted);
+}
+
+.more-l {
+  font: 400 #{rem(10)} var(--font-head);
+  text-transform: uppercase;
+  letter-spacing: rem(1);
+  color: var(--color-accent);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@include mq(md) {
+  .post__img {
+    flex-basis: rem(150);
+    height: rem(150);
+  }
+}
+
+@include mq(lg) {
+  .post {
+    flex-basis: calc(50% - #{rem(15)});
+  }
+}

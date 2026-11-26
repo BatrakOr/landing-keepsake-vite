@@ -1,0 +1,21 @@
+@use '../utils' as *;
+
+/* 44x44, always visible */
+.up {
+  position: fixed;
+  right: rem(20);
+  bottom: rem(20);
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: rem(44);
+  height: rem(44);
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: #fff;
+
+  &:hover {
+    background: var(--color-accent-hover);
+  }
+}

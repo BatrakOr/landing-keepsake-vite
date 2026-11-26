@@ -1,0 +1,201 @@
+@use '../utils' as *;
+
+.works {
+  padding-top: var(--section-gap);
+}
+
+.filter input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.chips {
+  display: flex;
+  gap: rem(8);
+  margin: rem(16) calc(-1 * var(--gutter)) rem(20) 0;
+  overflow-x: auto;
+  padding-bottom: rem(4);
+}
+
+.chip {
+  flex: 0 0 auto;
+  padding: rem(8) rem(14);
+  border: rem(1) solid var(--color-border);
+  font: 400 var(--fs-ui) / 1 var(--font-head);
+  text-transform: uppercase;
+  letter-spacing: rem(1);
+  color: var(--color-text-dark);
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+}
+
+/* active chip */
+[id='f-all']:checked ~ .chips [for='f-all'],
+[id='f-branding']:checked ~ .chips [for='f-branding'],
+[id='f-identity']:checked ~ .chips [for='f-identity'],
+[id='f-print']:checked ~ .chips [for='f-print'],
+[id='f-web']:checked ~ .chips [for='f-web'],
+[id='f-motion']:checked ~ .chips [for='f-motion'] {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+
+.filter [id='f-all']:focus-visible ~ .chips [for='f-all'],
+.filter [id='f-branding']:focus-visible ~ .chips [for='f-branding'],
+.filter [id='f-identity']:focus-visible ~ .chips [for='f-identity'],
+.filter [id='f-print']:focus-visible ~ .chips [for='f-print'],
+.filter [id='f-web']:focus-visible ~ .chips [for='f-web'],
+.filter [id='f-motion']:focus-visible ~ .chips [for='f-motion'] {
+  outline: rem(2) solid var(--color-teal);
+  outline-offset: rem(2);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap-grid);
+}
+
+.card {
+  aspect-ratio: 1 / 0.72;
+  position: relative;
+
+  /* mobile: 5 cards */
+  &:nth-child(n + 6) {
+    display: none;
+  }
+
+  a {
+    display: block;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  a:hover .over,
+  a:focus-visible .over,
+  &:focus-within .over {
+    opacity: 1;
+  }
+}
+
+/* colour shows until the image is added */
+.tile {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: var(--c);
+  color: var(--color-text-dark);
+  font: 700 #{rem(22)} var(--font-head);
+}
+
+.over {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: rem(8);
+  background: var(--color-overlay);
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.plus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: rem(40);
+  height: rem(40);
+  border-radius: 50%;
+  background: var(--color-teal);
+}
+
+.over__t {
+  font: 400 #{rem(14)} var(--font-head);
+  text-transform: uppercase;
+  letter-spacing: rem(1);
+
+  &::after {
+    content: '';
+    display: block;
+    width: rem(24);
+    height: rem(2);
+    margin: rem(8) auto 0;
+    background: var(--color-accent);
+  }
+}
+
+.over__c {
+  font: 400 #{rem(11)} var(--font-head);
+  text-transform: uppercase;
+  letter-spacing: rem(1);
+  color: var(--color-teal);
+}
+
+.more {
+  display: flex;
+  margin-top: rem(24);
+
+  .btn {
+    flex: 1;
+  }
+}
+
+@include mq(md) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card {
+    aspect-ratio: 1 / 0.79;
+
+    &:nth-child(n + 6) {
+      display: block;
+    }
+
+    /* tablet: 8 cards */
+    &:nth-child(n + 9) {
+      display: none;
+    }
+  }
+
+  .more {
+    justify-content: center;
+
+    .btn {
+      flex: 0 0 auto;
+    }
+  }
+}
+
+@include mq(lg) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* desktop: 9 cards */
+
+.card:nth-child(n + 9) {
+  display: block;
+}
+
+/* filter: hide cards of other categories (the id in the selector already beats the breakpoint display rules) */
+
+[id='f-branding']:checked ~ .grid .card:not([data-category='branding']),
+[id='f-identity']:checked ~ .grid .card:not([data-category='identity']),
+[id='f-print']:checked ~ .grid .card:not([data-category='print']),
+[id='f-web']:checked ~ .grid .card:not([data-category='web']),
+[id='f-motion']:checked ~ .grid .card:not([data-category='motion']) {
+  display: none;
+}
