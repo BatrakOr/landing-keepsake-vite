@@ -1,40 +1,24 @@
-$color-primary-darker: #2d2d2d;
-$color-primary-dark: #7c7575;
-$color-primary: #999;
-$color-primary-light: #e6e6e6;
-$color-primary-lighter: #fafafa;
-
-$text-color: #333;
-$font-main: 'Inter', system-ui, sans-serif;
-
-$grid-breakpoints: (
-        xs: 0,
-        sm: 544px,
-        md: 768px,
-        lg: 992px,
-        xl: 1200px,
-        xxl: 1600px
+$colors: (
+  'accent': #f95858,
+  'accent-hover': #e44646,
+  'teal': #2cd5c4,
+  'text-dark': #3a3a3c,
+  'text': #666a6e,
+  'muted': #9aa0a6,
+  'bg-light': #f0f3f4,
+  'border': #e1e5e8,
+  'footer': #2a2a2d,
+  'white': #fff,
 );
-
-$grid-columns: 12;
-$grid-fluid: false;
-$grid-gutter-widths: (
-        down sm: 40px,
-        up md: 30px,
-);
-
-$container-max-widths: (
-        sm: 540px,
-        md: 720px,
-        lg: 960px,
-        xl: 1140px
-);
-
-$border-radius: 5px;
-
-:root {
-  --font-main: #{$font-main};
-  --color-primary: #{$color-primary};
-  --color-secondary: #{$color-primary-light};
-  --text-color: #{$text-color};
-}
+$font-head: 'Oswald', sans-serif;
+$font-body: 'Open Sans', sans-serif;
+$font-logo: 'Dancing Script', cursive;
+$gutter-mobile: 20px;
+$gutter-tablet: 40px;
+$gutter-desktop: 90px;
+$section-gap-mobile: 56px;
+$section-gap-tablet: 72px;
+$section-gap-desktop: 90px;
+$container-max: 1100px;
+$header-h-mobile: 64px;
+$header-h-tablet: 72px;

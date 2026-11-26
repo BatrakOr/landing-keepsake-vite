@@ -1,0 +1,48 @@
+@use '../utils' as *;
+
+:root {
+  @each $name, $hex in $colors {
+    --color-#{$name}: #{$hex};
+  }
+
+  --color-overlay: rgb(30 32 36 / 82%);
+  --font-head: #{$font-head};
+  --font-body: #{$font-body};
+  --font-logo: #{$font-logo};
+  --gutter: #{$gutter-mobile};
+  --section-gap: #{$section-gap-mobile};
+  --gap-grid: #{rem(12)};
+  --fs-h1: #{rem(26)};
+  --fs-cta: #{rem(22)};
+  --fs-quote: #{rem(16)};
+  --fs-stat: #{rem(38)};
+  --fs-ui: #{rem(12)};
+  --fs-logo: #{rem(22)};
+  --fs-logo-k: #{rem(34)};
+  --header-h: #{$header-h-mobile};
+  --container: #{$container-max};
+
+  @include mq(md) {
+    --gutter: #{$gutter-tablet};
+    --section-gap: #{$section-gap-tablet};
+    --gap-grid: #{rem(12)};
+    --fs-h1: #{rem(32)};
+    --fs-cta: #{rem(24)};
+    --fs-quote: #{rem(19)};
+    --fs-stat: #{rem(40)};
+    --fs-ui: #{rem(13)};
+    --fs-logo: #{rem(26)};
+    --fs-logo-k: #{rem(40)};
+    --header-h: #{$header-h-tablet};
+  }
+
+  @include mq(lg) {
+    --gutter: #{$gutter-desktop};
+    --section-gap: #{$section-gap-desktop};
+    --gap-grid: #{rem(14)};
+    --fs-h1: #{rem(40)};
+    --fs-cta: #{rem(28)};
+    --fs-quote: #{rem(22)};
+    --fs-stat: #{rem(48)};
+  }
+}
