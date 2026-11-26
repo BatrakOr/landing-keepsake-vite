@@ -1,7 +1,159 @@
+@use '../utils' as *;
+
 .footer {
-  background: var(--color-secondary);
-  color: white;
+  background: var(--color-footer);
+  color: var(--color-muted);
+  padding-block: rem(48) rem(24);
+  font-size: rem(12);
+
+  h2 {
+    font: 400 #{rem(11)} var(--font-head);
+    text-transform: uppercase;
+    letter-spacing: rem(1.5);
+    color: #fff;
+    margin-bottom: rem(12);
+  }
+}
+
+.footer__top {
+  display: flex;
+  flex-direction: column;
+  gap: rem(32);
+}
+
+.sub {
+  order: -1;
+}
+
+.fcols {
+  display: flex;
+  gap: rem(40);
+
+  li + li {
+    margin-top: rem(6);
+  }
+
+  a:hover {
+    color: #fff;
+  }
+}
+
+.sub__row {
+  display: flex;
+  flex-direction: column;
+  gap: rem(8);
+  margin-top: rem(10);
+}
+
+.sub input[type='email'] {
+  padding: rem(11) rem(12);
+  border: rem(1) solid #44464b;
+  background: #34363a;
+  color: #fff;
+  font: 400 #{rem(12)} var(--font-body);
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-teal);
+  }
+}
+
+.sub__form:has(input[type='email']:user-invalid) input[type='email'] {
+  border-color: var(--color-accent);
+}
+
+.err {
+  display: none;
+  margin-top: rem(6);
+  color: var(--color-accent);
+}
+
+.sub__form:has(input[type='email']:user-invalid) .err {
+  display: block;
+}
+
+.agree {
+  display: flex;
+  align-items: center;
+  gap: rem(8);
+  margin-top: rem(10);
+  font-size: rem(11);
+}
+
+.ok {
+  display: none;
+  color: var(--color-teal);
+}
+
+.sub:target .sub__form {
+  display: none;
+}
+
+.sub:target .ok {
+  display: block;
+}
+
+.footer__bot {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: rem(16);
+  margin-top: rem(32);
+  padding-top: rem(20);
+  border-top: rem(1) solid #44464b;
   text-align: center;
-  padding: 1rem;
-  font-size: 0.9rem;
+}
+
+.social {
+  display: flex;
+  gap: rem(8);
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: rem(24);
+    height: rem(24);
+    border-radius: 50%;
+    background: var(--c);
+    color: #fff;
+    font: 700 #{rem(11)} var(--font-body);
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+}
+
+@include mq(md) {
+  .footer__top {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .sub {
+    order: 0;
+    flex: 0 1 rem(380);
+  }
+
+  .sub__row {
+    flex-direction: row;
+  }
+
+  .sub input[type='email'] {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .footer__bot {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+@include mq(lg) {
+  .fcols {
+    gap: rem(80);
+  }
 }

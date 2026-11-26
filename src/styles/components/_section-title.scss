@@ -1,0 +1,24 @@
+@use '../utils' as *;
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: rem(10);
+  font: 400 #{rem(18)} / 1.2 var(--font-head);
+  color: var(--color-text-dark);
+  text-transform: uppercase;
+  letter-spacing: rem(1.5);
+
+  &::after {
+    content: '';
+    width: rem(16);
+    height: rem(2);
+    background: var(--color-accent);
+  }
+}
+
+.lead {
+  margin-top: rem(8);
+  font-size: rem(12);
+  color: var(--color-muted);
+}

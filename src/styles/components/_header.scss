@@ -1,15 +1,172 @@
-@use '../utils/mixins' as *;
+@use '../utils' as *;
 
 .header {
-  // declare mixins before styles
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  height: var(--header-h);
+  background: var(--color-white);
+  border-bottom: rem(1) solid var(--color-border);
+}
 
-  @include flex-center;
-  background: var(--color-primary);
-  color: white;
-  padding: 1rem;
+.header__in {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.logo {
+  display: flex;
+  align-items: baseline;
+  font: 700 var(--fs-logo) / 1 var(--font-logo);
+  color: var(--color-text-dark);
+}
+
+.logo__k {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--fs-logo-k);
+  height: var(--fs-logo-k);
+  border-radius: 50%;
+  background: var(--color-text-dark);
+  color: #fff;
+  margin-right: rem(2);
+  align-self: center;
+}
+
+.nav-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.burger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: rem(40);
+  height: rem(40);
+  margin-left: auto;
+  cursor: pointer;
+  color: var(--color-text-dark);
+}
+
+.burger__close,
+.nav-toggle:checked ~ .burger .burger__open {
+  display: none;
+}
+
+.nav-toggle:checked ~ .burger .burger__close {
+  display: block;
+}
+
+.nav-toggle:focus-visible ~ .burger {
+  outline: rem(2) solid var(--color-teal);
+}
+
+/* mobile dropdown (position:absolute here is only the dropdown, not the grid) */
+.nav {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding: 0 var(--gutter) rem(24);
+  background: var(--color-white);
+  border-bottom: rem(1) solid var(--color-border);
+}
+
+.nav-toggle:checked ~ .nav {
+  display: block;
+}
+
+.nav__list a {
+  display: block;
+  padding: rem(14) 0;
+  border-bottom: rem(1) solid var(--color-border);
+  font: 400 var(--fs-ui) / 1 var(--font-head);
+  text-transform: uppercase;
+  letter-spacing: rem(1);
+  color: var(--color-text-dark);
+
+  &:hover,
+  &[aria-current='page'] {
+    color: var(--color-accent);
+  }
+}
+
+.nav__mobile {
+  display: flex;
+  flex-direction: column;
+  gap: rem(10);
+  padding-top: rem(20);
+}
+
+.nav__contacts {
+  font-style: normal;
   text-align: center;
+  margin-top: rem(10);
+}
 
-  h1 {
-    font-size: 2rem;
+.nav__mobile .social {
+  justify-content: center;
+}
+
+.fav {
+  display: none;
+}
+
+@include mq(md) {
+  .burger,
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav,
+  .nav-toggle:checked ~ .nav {
+    display: block;
+    position: static;
+    padding: 0;
+    border: 0;
+    margin-left: auto;
+  }
+
+  .nav__list {
+    display: flex;
+    gap: rem(24);
+
+    a {
+      padding: 0;
+      border: 0;
+    }
+  }
+
+  .nav__mobile {
+    display: none;
+  }
+
+  .fav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: rem(36);
+    height: rem(36);
+    margin-left: rem(24);
+    background: var(--color-accent);
+    color: #fff;
+
+    &:hover {
+      background: var(--color-accent-hover);
+    }
+  }
+}
+
+@include mq(lg) {
+  .nav__list {
+    gap: rem(32);
   }
 }

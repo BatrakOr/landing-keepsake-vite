@@ -1,3 +1,5 @@
-@forward 'header';
-@forward 'footer';
-@forward 'button';
+@forward './button';
+@forward './section-title';
+@forward './header';
+@forward './footer';
+@forward './back-to-top';
