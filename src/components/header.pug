@@ -1,4 +1,38 @@
+//- src/components/header.pug
 header.header
-    .header-inner
-        include logo
-        include navigation
+  .container.header__in
+    a.logo(href='#top', aria-label='Keepsake — home')
+      span.logo__k K
+      span.logo__t eepsake
+    input#nav-toggle.nav-toggle(type='checkbox', aria-hidden='true', tabindex='-1')
+    label.burger(
+      for='nav-toggle',
+      role='button',
+      tabindex='0',
+      aria-label='Toggle menu',
+      aria-controls='menu',
+      aria-expanded='false'
+    )
+      +icon('burger', 24).burger__open
+      +icon('close', 24).burger__close
+    nav#menu.nav(aria-label='Main')
+      ul.nav__list
+        each item in navItems
+          li
+            a(
+              href=item.href,
+              class={ 'nav__link--active': item.active },
+              aria-current=item.active ? 'page' : null
+            ) #{ item.label }
+      .nav__mobile
+        +btn('Contact us', '#contact')
+        +btn('Favourites', '#favourites', 'ghost')
+        address.nav__contacts
+          | #{ site.contactEmail }
+          br
+          | #{ site.contactPhone }
+        .social(aria-label='Social networks')
+          each soc in socials
+            a(href=soc.href, aria-label=soc.name, style=`--c:${soc.color}`) #{ soc.letter }
+    a#favourites.fav(href='#favourites', aria-label='Favourites')
+      +icon('heart', 16)

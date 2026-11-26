@@ -1,19 +1,111 @@
-extends ../layouts/main
+extends ../layouts/main.pug
 
-block fonts
-    include ../includes/fonts
-
-append meta
-    include ../includes/meta
-
-block data
-    include ../data/data
-
-block header
-    include ../components/header
+block append meta
+  meta(name='description', content=site.description)
+  meta(property='og:title', content='Keepsake — digital & branding agency')
+  meta(
+    property='og:description',
+    content='Keepsake is a digital and branding agency specializing in web design, poster, and motion video.'
+  )
 
 block content
-    include ../components/content
+  section.hero(aria-labelledby='hero-title')
+    .container
+      h1#hero-title We're Keepsake, a digital &amp; branding agency
+      p
+        | Specializing in web design, poster, motion video, based in London. We love to turn ideas into beautiful things.
+      .hero__btns
+        +btn('See our works', '#works')
+        +btn('Get in touch', '#contact', 'ghost')(aria-label='Get in touch with Keepsake')
 
-block footer
-    include ../components/footer
+  section#works.works(aria-labelledby='works-title')
+    .container
+      .filter
+        h2#works-title.section-title Our awesome works
+        each cat in categories
+          input(id=`f-${cat.id}`, type='radio', name='f', checked=cat.checked)
+        .chips
+          each cat in categories
+            label.chip(for=`f-${cat.id}`) #{ cat.label }
+        ul.grid
+          each work, i in works
+            li.card(data-category=work.category, data-index=i)
+              +work-card(work)
+      p.more
+        +btn('Load more works', '#works', 'ghost')
+
+  section#contact.cta(aria-labelledby='cta-title')
+    .container
+      h2#cta-title.cta__t Would you love to work with us?
+      +btn('Contact us', 'mailto:' + site.contactEmail)
+        +icon('mail', 14)
+
+  section#about.services(aria-labelledby='svc-title')
+    .container
+      h2#svc-title.section-title What do we do
+      p.lead We are a small team of designers and makers who help brands look their best online and offline.
+      ul.svc
+        each svc in services
+          li
+            if svc.accentIcon
+              span.svc__i(style='color: #f95858')
+                +icon(svc.icon, 40)
+            else
+              span.svc__i
+                +icon(svc.icon, 40)
+            h3 #{ svc.title }
+            p #{ svc.text }
+      ul.stats
+        each st in stats
+          li
+            b #{ st.value }
+            span #{ st.label }
+
+  section.clients(aria-labelledby='cl-title')
+    .container
+      h2#cl-title.section-title Clients &amp; kind words
+      p.lead Some of the teams that trusted us with their brands.
+      ul.logos
+        each cl in clients
+          li(style='font-weight:' + cl.weight + ';letter-spacing:' + cl.tracking) #{ cl.name }
+      figure.quote
+        svg.quote__m(width='22', height='22', viewBox='0 0 24 24', aria-hidden='true')
+          path(
+            fill='currentColor',
+            d='M4 18v-6c0-4 2-6 6-7v3c-2 .5-3 2-3 4h3v6zm10 0v-6c0-4 2-6 6-7v3c-2 .5-3 2-3 4h3v6z'
+          )
+        blockquote
+          p
+            | Keepsake turned a vague brief into a brand we are proud of. The team was fast, honest about trade-offs and obsessed with the details.
+        figcaption
+          span.avatar(aria-hidden='true') OM
+          span
+            b Olena Marchenko
+            small Marketing Lead, Nordly
+          span.dots(aria-hidden='true')
+            i.on
+            i
+            i
+
+  section#journal.journal(aria-labelledby='j-title')
+    .container
+      h2#j-title.section-title From the journal
+      p.lead Notes on process, case studies and things that inspire us.
+      .posts
+        each post in posts
+          article.post
+            +picture({
+              name: post.image,
+              alt: '',
+              width: 150,
+              height: 150,
+              eager: false,
+              sizes: '(min-width: 768px) 150px, 96px',
+              imgClass: 'post__img',
+              color: post.color,
+            })
+            div
+              p.meta #{ post.date } / #{ post.tag }
+              h3 #{ post.title }
+              p #{ post.excerpt }
+              a.more-l(href='#journal') Read more
