@@ -1,56 +1,21 @@
-# Vite Pug Template
-
-Шаблон для швидкого старту проєктів з використанням **Vite**, **Pug**, та **SCSS**.  
-Структура оптимізована для компонентного підходу: Pug-компоненти, SCSS-модулі та гнучка система підключення стилів.
-
----
+# Keepsake: лендінг на Vite, Pug і SCSS
 
 ## 🔧 Вимоги до середовища
-Для запуску проєкту необхідно мати встановлений Node.js (версія 20 або новіша) та npm.
 
-### 1. Перевірка наявності Node.js і npm
+Node.js v26.13.0
+npm v11.20.0
+
+### 3. Команди
+
 ```bash
-node -v
-npm -v
+npm install        # встановити залежності
+npm run dev        # сервер розробки з live reload (http://localhost:5173/landing-keepsake-vite/)
+npm run build      # збірка в папку dist
+npm run preview    # локальний перегляд зібраного сайту
+npm run images     # згенерувати AVIF, WebP і JPEG з src/assets/images-src
+npm run format     # відформатувати код Prettier
+npm run lint       # Stylelint (SCSS) + Prettier --check
 ```
-Якщо у консолі з’явилися версії (наприклад v20.10.0), усе гаразд ✅
-
-### 2. Встановлення Node.js
-Якщо Node.js не встановлено — завантажте останню LTS-версію з офіційного сайту:
-👉 https://nodejs.org
-
-Після встановлення перевірте знову:
-```bash
-node -v
-npm -v
-```
-
-## 🚀 Запуск проєкту
-
-### 1. Встановлення залежностей
-```bash
-npm install
-```
-
-### 2. Режим розробки
-```bash
-npm run dev
-```
-Проєкт запуститься локально (зазвичай на [http://localhost:5173](http://localhost:5173))  
-Файли автоматично оновлюються при зміні коду.
-
-### 3. Збірка для продакшну
-```bash
-npm run build
-```
-Готові файли з’являться в директорії `dist/`.
-
-### 4. Перегляд зібраної версії
-```bash
-npm run preview
-```
-
----
 
 ## 🧩 Структура проєкту
 
@@ -71,121 +36,20 @@ src/
  └─ vite.config.js       # налаштування Vite + Vituum
 ```
 
----
+## Цільові браузери(.browserlist)
 
-## 📝 Робота з Pug
+last 2 Chrome versions
+last 2 Firefox versions
+last 2 Edge versions
+last 2 Safari versions
+last 2 iOS versions
 
-### 📄 Мінімальний приклад сторінки (`src/pages/index.pug`)
+# Результат оптимізації
 
-```pug
-doctype html
-html(lang="en")
-  include ../includes/head.pug
+## css
 
-  body
-    include ../components/header.pug
+### Зображення
 
-    main.page
-      section.intro
-        h1 Hello, Vite + Pug + SCSS!
-        p Це приклад простої сторінки з компонентами.
-
-    include ../components/footer.pug
-```
-
----
-
-### 🧱 Приклад компонентів
-
-#### `src/components/header.pug`
-```pug
-header.site-header
-  h2 Логотип або назва сайту
-```
-
-#### `src/components/footer.pug`
-```pug
-footer.site-footer
-  p © 2025 Мій шаблон на Vite + Pug
-```
-
-#### `src/includes/head.pug`
-```pug
-head
-  meta(charset="utf-8")
-  meta(name="viewport", content="width=device-width, initial-scale=1")
-  title Vite Pug Template
-  link(rel="stylesheet", href="/src/styles/main.scss")
-```
-
----
-
-## 🎨 Робота з SCSS
-
-### 📂 Структура стилів
-Головний файл — `src/styles/main.scss`
-
-```scss
-@use 'utils/index' as *;
-@use 'base/index' as *;
-@use 'layout/index' as *;
-@use 'components/index' as *;
-```
-
----
-
-### 📄 Мінімальний приклад `src/styles/utils/_variables.scss`
-```scss
-$color-bg: #f5f5f5;
-$color-text: #222;
-$font-main: 'Inter', sans-serif;
-```
-
----
-
-### 📄 Мінімальний приклад `src/styles/main.scss`
-```scss
-@use 'utils/variables' as *;
-
-body {
-  font-family: $font-main;
-  background-color: $color-bg;
-  color: $color-text;
-  margin: 0;
-  padding: 0;
-}
-
-.site-header,
-.site-footer {
-  text-align: center;
-  padding: 1.5rem;
-  background: #ddd;
-}
-
-.intro {
-  text-align: center;
-  padding: 3rem 1rem;
-}
-```
-
----
-
-## 🧠 Корисні поради
-
-- Усі компоненти підключай через `include`.
-- SCSS імпортуй лише у `main.scss`, а не у Pug-файлах.
-- Додавай зображення до `src/assets/` і використовуй їх у коді як:
-  ```pug
-  img(src="/src/assets/logo.png" alt="Logo")
-  ```
-
----
-
-## 📦 Використані пакети
-
-| Пакет | Опис |
-|-------|------|
-| [Vite](https://vitejs.dev/) | Швидкий білдер проєктів |
-| [Vituum](https://vituum.dev/) | Плагін для шаблонізаторів |
-| [@vituum/vite-plugin-pug](https://www.npmjs.com/package/@vituum/vite-plugin-pug) | Підтримка Pug |
-| [Sass](https://sass-lang.com/) | Препроцесор стилів |
+| Зображення | Оригінал (JPG) | 400w AVIF | 400w WebP | 800w AVIF | 800w WebP | 800w JPEG |
+| ---------- | -------------- | --------- | --------- | --------- | --------- | --------- |
+| vol-16     | 12,2 KB        | 2,63 KB   | 2,85 KB   | 5,16 KB   | 5,83 KB   | 13,5 KB   |
